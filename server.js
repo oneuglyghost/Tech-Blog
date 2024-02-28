@@ -12,8 +12,10 @@ dotenv.config();
 const app = express();
 
 // Set up Handlebars as the templating engine
-app.engine('handlebars', exphbs());
-app.set('view engine', 'handlebars');
+app.engine('handlebars', exphbs({
+  partialsDir: path.join(__dirname, 'views', 'partials'),
+}));
+app.set("view engine", "Handlebars");
 
 // Set up middleware
 app.use(express.urlencoded({ extended: true }));
