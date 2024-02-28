@@ -1,0 +1,19 @@
+-- Create User table
+CREATE TABLE IF NOT EXISTS User (
+  id INT AUTO_INCREMENT PRIMARY KEY,
+  username VARCHAR(200) NOT NULL UNIQUE,
+  password VARCHAR(200) NOT NULL
+);
+
+-- Create Post table
+CREATE TABLE IF NOT EXISTS Post (
+  id INT AUTO_INCREMENT PRIMARY KEY,
+  title VARCHAR(200) NOT NULL,
+  content TEXT NOT NULL
+);
+
+-- Create Comment table
+CREATE TABLE IF NOT EXISTS Comment (
+  id INT AUTO_INCREMENT PRIMARY KEY,
+  content TEXT NOT NULL
+);
