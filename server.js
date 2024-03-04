@@ -2,7 +2,8 @@ const express = require('express');
 const exphbs = require('express-handlebars');
 const path = require('path');
 const dotenv = require('dotenv');
-const { sequelize } = require('./db/schema');
+const fs = require('fs');
+const sequelize  = require('./config/connection');
 const apiRoutes = require('./routes/api');
 const htmlRoutes = require('./routes/html');
 
@@ -15,12 +16,14 @@ const app = express();
 app.engine('handlebars', exphbs({
   partialsDir: path.join(__dirname, 'views', 'partials'),
 }));
-app.set("view engine", "Handlebars");
+app.set("view engine", "handlebars");
 
 // Set up middleware
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 app.use(express.static(path.join(__dirname, 'public')));
+
+
 
 // Set up routes
 app.use('/api', apiRoutes);
